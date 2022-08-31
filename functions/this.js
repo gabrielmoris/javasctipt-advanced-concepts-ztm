@@ -151,6 +151,7 @@ var d = {
 // c.say()();
 // d.say()();
 
+//Exercise!!
 const character = {
   name: "Simon",
   getCharacter() {
