@@ -23,3 +23,8 @@ function marry2(...args) {
 }
 console.log(marry("Tim", "Tina"));
 console.log(marry2("Pepe", "Maruja"));
+
+//function constructor
+
+const funcConst = new Function("return 34");
+console.log("funcconst", funcConst());
