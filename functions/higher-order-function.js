@@ -53,5 +53,20 @@ function letPerson(person, fn) {
   return giveAccessTo(person.name);
 }
 
-console.log(letPerson({ level: "user", name: "Jaime" }, authenticate));
-console.log(letPerson({ level: "admin", name: "Jorge" }, authenticate));
+// console.log(letPerson({ level: "user", name: "Jaime" }, authenticate));
+// console.log(letPerson({ level: "admin", name: "Jorge" }, authenticate));
+
+//Exercise multiplyBy as a HOF
+
+// const multiplyBy = (num1) => {
+//   return function (num2) {
+//     return num1 * num2;
+//   };
+// };
+
+//as an arrow function (sooo clean)
+
+const multiplyBy = (num1) => (num2) => num1 * num2;
+const multiplyByTwo = multiplyBy(2);
+
+console.log(multiplyByTwo(8));
