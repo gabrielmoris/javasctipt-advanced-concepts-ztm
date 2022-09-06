@@ -67,6 +67,7 @@ function letPerson(person, fn) {
 //as an arrow function (sooo clean)
 
 const multiplyBy = (num1) => (num2) => num1 * num2;
+
 const multiplyByTwo = multiplyBy(2);
 
 console.log(multiplyByTwo(8));
