@@ -9,6 +9,30 @@ function a() {
   };
 }
 
-console.log(a()()());
+// console.log(a()()());
 
-const one = a();
+const boo = (string) => (name) => (name2) =>
+  console.log(`${string}, ${name} ${name2}`);
+
+// boo("hi")("Saludos")("Cordiales");
+
+const greeting = boo("hello");
+const personGreeting = greeting();
+
+//Exercise
+//setTimeOut will be handled with the javaScript Runtime and the const callMe will be still Available!!
+function callMeMaybe() {
+  const callMe = "Hi! I am now here!";
+  setTimeout(() => {
+    console.log(callMe);
+  }, 4000);
+}
+callMeMaybe();
+//In this case the variable will be after the setTimeOut, but the callMe const is still saved because the SetTimeOut needs it!
+function callMeMaybe2() {
+  setTimeout(() => {
+    console.log(callMe);
+  }, 4000);
+  const callMe = "Hi! I am now here!";
+}
+callMeMaybe2();
