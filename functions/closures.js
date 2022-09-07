@@ -63,3 +63,36 @@ const getHeavyDuty = heavyDuty2();
 // console.log(getHeavyDuty(454));
 
 //2. Encapsulation:
+//copyPaste in browser.
+const getNuclearButton = () => {
+  let timeWithoutDestruction = 0;
+  const passTime = () => {
+    timeWithoutDestruction++;
+  };
+  const totalPeaceTime = () => {
+    return timeWithoutDestruction;
+  };
+  const launch = () => {
+    timeWithoutDestruction = -1;
+    return "🎆";
+  };
+  setInterval(passTime, 1000);
+  return {
+    //If i dont return the launch, It wont be accessible from the outside of the fn,
+    totalPeaceTime,
+    // launch,
+  };
+};
+
+const ohNo = getNuclearButton();
+// console.log(ohNo.totalPeaceTime());
+///////////////////////////EXERCISE/////////////////////////////////
+let view;
+function initialize() {
+  view = "🎉";
+  console.log("view has been set");
+}
+
+initialize();
+initialize();
+initialize();
