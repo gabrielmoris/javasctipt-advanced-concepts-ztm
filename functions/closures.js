@@ -57,7 +57,7 @@ function heavyDuty2() {
   };
 }
 
-const getHeavyDuty = heavyDuty2();
+// const getHeavyDuty = heavyDuty2();
 // console.log(getHeavyDuty(4));
 // console.log(getHeavyDuty(44));
 // console.log(getHeavyDuty(454));
@@ -84,15 +84,45 @@ const getNuclearButton = () => {
   };
 };
 
-const ohNo = getNuclearButton();
+// const ohNo = getNuclearButton();
 // console.log(ohNo.totalPeaceTime());
 ///////////////////////////EXERCISE/////////////////////////////////
+//Be able to call this function only once:
+// let view;
+// function initialize() {
+//   view = "🎉";
+//   console.log("view has been set");
+// }
 let view;
 function initialize() {
-  view = "🎉";
-  console.log("view has been set");
+  let called = 0;
+  return () => {
+    if (called <= 0) {
+      view = "🎉";
+      console.log("view has been set");
+      called++;
+    }
+  };
 }
 
-initialize();
-initialize();
-initialize();
+//It will make the function save the called count
+// const callInitialize = initialize();
+// callInitialize();
+// callInitialize();
+// callInitialize();
+
+///Exercise 2 // solve this unexpected output without using let
+// const array = [1, 2, 3, 4];
+// for (var i = 0; i < array.length; i++) {
+//   setTimeout(function () {
+//     console.log("I am at index " + i);
+//   }, 3000);
+// }
+const array = [1, 2, 3, 4];
+for (var i = 0; i < array.length; i++) {
+  (function (closureI) {
+    setTimeout(function () {
+      console.log("I am at index " + closureI);
+    }, 3000);
+  })(i);
+}
