@@ -39,7 +39,7 @@ const talkingLizard = dragon.talk.bind(lizard);
 console.log(talkingLizard());
 //make lizard to inherit dragon properties and methods
 console.log(dragon.isPrototypeOf(lizard));
-lizard.__proto__ = dragon;
+lizard.__proto__ = dragon; //This is a bad practice because affects to the performance of the JS compiler, but It works
 console.log(dragon.isPrototypeOf(lizard));
 console.log(lizard.talk()); //will inherit all properties from Dragon and overwrite the own properties
 //Check inherited & own props
@@ -50,3 +50,11 @@ for (let prop in lizard) {
     console.log("Inherited Prop: ", prop);
   }
 }
+
+// The interesting think is that we can make objects that points to the same space in memory
+
+/////////////////////
+//With functions there are some properties
+function aia() {}
+console.log(aia.hasOwnProperty("name"));
+console.log(aia.hasOwnProperty("bind")); //Thi is false because the prototype comes from the "parent"
