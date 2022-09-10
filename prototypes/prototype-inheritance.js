@@ -76,11 +76,32 @@ socrates.age = 48;
 // new Date("1900-10-10").lastYear();
 //'1899'
 
-const date = new Date();
-function lastYear() {}
-console.log(date);
+Date.prototype.lastYear = function () {
+  const year = this.getFullYear() - 1;
+  return year;
+};
+
+console.log(new Date("1900-10-10").lastYear());
 
 //#Bonus
 // Mofify .map() to print '🗺' at the end of each item.
 // console.log([1, 2, 3].map());
 //1🗺, 2🗺, 3🗺
+
+Array.prototype.map = function () {
+  maped = [];
+  this.forEach((item) => {
+    const mapedITem = `${item.toString()} 🗺`;
+    maped.push(mapedITem);
+  });
+  return maped;
+};
+console.log([1, 2, 3].map());
+
+//Create my own bind property
+Function.prototype.bind = function (whoIsCallingMe) {
+  const self = this;
+  return function () {
+    return self.apply(whoIsCallingMe, arguments);
+  };
+};
