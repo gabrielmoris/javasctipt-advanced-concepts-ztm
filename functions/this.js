@@ -161,4 +161,50 @@ const character = {
 const giveMeTheCharacterNOW = character.getCharacter.bind(character);
 
 //How Would you fix this?
-console.log("?", giveMeTheCharacterNOW()); //this should return 'Simon' bud doesn't
+console.log("?", giveMeTheCharacterNOW()); //this should return 'Simon'
+
+//=====Ways of manipulate this keyword
+
+// new binding this:
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const juan = new Person("Juan", 65);
+console.log(juan);
+
+// implicit binding
+
+const person = {
+  name: "Alberto",
+  age: 33,
+  hi() {
+    console.log("Hi," * this.name);
+  },
+};
+
+// Explicit binding
+
+// const person2 = {
+//   name: "Maricarmen",
+//   age: 43,
+//   hi: function () {
+//     console.log("Hi," + this.setTimeout);
+//   }.bind(window),
+// };
+
+// arrow functions (Lexical scoping)
+
+const personArrow = {
+  name: "Legolas",
+  age: 43,
+  hi: function () {
+    var inner = () => {
+      console.log("Hi ," + this.name);
+    };
+    return inner();
+  },
+};
+
+personArrow.hi();
