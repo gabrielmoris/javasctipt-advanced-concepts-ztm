@@ -26,21 +26,21 @@ item2 = {
   price: 23,
 };
 
-function addToCart(user, item) {
+function addToCartBefore(user, item) {
   item.price = item.price + (item.price * 3) / 100;
   return user.cart.push(item);
 }
 
-function emptyCart(user) {
+function emptyCartBefore(user) {
   user.cart = [];
 }
 
-function purchase(user) {
+function purchaseBefore(user) {
   user.purchases = user.cart;
   user.cart = [];
 }
 
-function refund(user, item) {
+function refundBefore(user, item) {
   let arrToRepush = [];
   user.purchases.forEach((purchasedItem) => {
     if (purchasedItem.name !== item.name) {
@@ -49,15 +49,17 @@ function refund(user, item) {
   });
   user.purchases = arrToRepush;
 }
-addToCart(user, item1);
+// addToCartBefore(user, item1);
 
 // console.log("add item to cart", user);
-// emptyCart(user);
+// emptyCartBefore(user);
 // console.log("Empty cart", user);
-// addToCart(user, item2);
-// addToCart(user, item1);
+// addToCartBefore(user, item2);
+// addToCartBefore(user, item1);
 // console.log("add 2 items to cart", user);
-// purchase(user);
+// purchaseBefore(user);
 // console.log("user purchased the items:", user);
-// refund(user, item1);
+// refundBefore(user, item1);
 // console.log("user refund item1:", user);
+
+// After I LEARNED FP
