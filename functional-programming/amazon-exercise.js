@@ -63,3 +63,55 @@ function refundBefore(user, item) {
 // console.log("user refund item1:", user);
 
 // After I LEARNED FP
+let amazonHistory = [];
+const pipe =
+  (f, g) =>
+  (...args) =>
+    g(f(...args));
+
+//reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order,
+// passing in the return value from the calculation on the preceding element.
+function purchaseItem(...fns) {
+  return fns.reduce(pipe);
+}
+
+function addItemToCart(user, item) {
+  amazonHistory.push(user);
+  const updatedCart = user.cart.concat(item);
+  return Object.assign({}, user, { cart: updatedCart });
+}
+function applyTax(user) {
+  amazonHistory.push(user);
+  const { cart } = user;
+  const taxRate = 1.03;
+  const updatedCart = cart.map((item) => {
+    return { name: item.name, price: item.price * taxRate };
+  });
+  return Object.assign({}, user, { cart: updatedCart });
+}
+function buyItem(user) {
+  amazonHistory.push(user);
+  return Object.assign({}, user, { purchases: user.cart });
+}
+function emptyCart(user) {
+  amazonHistory.push(user);
+  return Object.assign({}, user, { cart: [] });
+}
+function refundITem() {}
+
+purchaseItem(
+  addItemToCart,
+  applyTax,
+  buyItem,
+  emptyCart
+)(
+  {
+    name: "Marco Antonio",
+    active: true,
+    cart: [],
+    purchases: [],
+  },
+  { name: "laptop", price: 288 }
+);
+
+console.log(amazonHistory);
