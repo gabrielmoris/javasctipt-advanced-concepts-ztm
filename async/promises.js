@@ -58,7 +58,6 @@ const urls = [
 
 Promise.all(
   urls.map((url) => {
-    console.log(url);
     return fetch(url).then((response) => {
       return response.json();
     });
