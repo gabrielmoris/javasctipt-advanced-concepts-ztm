@@ -28,18 +28,18 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 
-// promise
-//   .then((result) => result + "! Wonderful!")
-//   .then((result2) => console.log(result2))
-//   .catch((e) => console.log(e));
+promise
+  .then((result) => result + "! Wonderful!")
+  .then((result2) => console.log(result2))
+  .catch((e) => console.log(e));
 
-const promise2 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 5000, "SetTimeOut 5s Resolved");
-});
+// const promise2 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 5000, "SetTimeOut 5s Resolved");
+// });
 
-const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 1000, "SetTimeOut 1s Resolved");
-});
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 1000, "SetTimeOut 1s Resolved");
+// });
 
 //It returns in orer, doesnt matter if goes to the web API or not
 // Promise.all([promise3, promise2, promise])
@@ -66,4 +66,7 @@ Promise.all(
   .then((results) => {
     console.log(results);
   })
-  .catch((e) => console.log("Error fetching: ", e));
+  .catch((e) => console.log("Error fetching: ", e))
+  .finally(() => {
+    console.log("Finally will work ALWAYS");
+  });
