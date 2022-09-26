@@ -70,3 +70,11 @@ Promise.all(
   .finally(() => {
     console.log("Finally will work ALWAYS");
   });
+
+// allSettled()
+
+const promiseOne = new Promise((resolve, reject) => setTimeout(resolve, 3000));
+const promiseTwo = new Promise((resolve, reject) => setTimeout(reject, 3000));
+
+//with this I dont need to catch
+Promise.allSettled([promiseOne, promiseTwo]).then((data) => console.log(data));
