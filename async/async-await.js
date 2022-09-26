@@ -44,4 +44,15 @@ const getData = async () => {
     console.log("error: ", e);
   }
 };
-getData();
+// getData();
+
+//for await of
+const getData2 = async function () {
+  const arrayOfPromises = urls.map((url) => fetch(url));
+  for await (let request of arrayOfPromises) {
+    const data = await request.json();
+    //just show the first
+    console.log(data[0]);
+  }
+};
+getData2();
