@@ -27,3 +27,8 @@ console.log(module1.fight("ron", "hagrid"));
 //     dance: dance,
 //   };
 // });
+
+//ES6 module
+// import fight2 from "./es6/es6.js";
+// fight2("pikachu", "psyduck");
+//in folder es6
