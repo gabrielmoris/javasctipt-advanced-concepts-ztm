@@ -16,8 +16,31 @@ function createError() {
   return error;
 }
 
-console.log(createError().stack);
+// console.log(createError().stack);
 
 //error constructors
 const syntax = new SyntaxError();
 const reference = new ReferenceError();
+
+//This error is a class and can be exended
+
+class AutenthicationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "authenticationError";
+  }
+}
+
+// throw new AutenthicationError("Error authenticating");
+
+//Why is this useful? Avoid giving too much error information to the user
+class DatabaseError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "DatabaseError";
+    this.stack = "In Database.";
+    this.message = "Just an error";
+  }
+}
+
+throw new DatabaseError("Error here!");
