@@ -4,11 +4,11 @@ console.log("Turtle".padStart(30)); //30 spaces before + string. PadEnd is the s
 
 //ending comas in args a now valid
 
-const func = (a, b) => {
-  console.log(a, b);
-};
+// const func = (a, b,) => {
+//   console.log(a, b);
+// };
 
-func("hi", "dude");
+// func("hi", "dude");
 
 //Object.values,Object.entries
 const obj = {
